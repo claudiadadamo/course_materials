@@ -3,7 +3,10 @@
 import random
 
 
-words = ['hello', 'bootcamp', 'philosophy']
+words = ['cat', 'book', 'bacon', 'alligator', 'banana']
+
+# how can we incorporate a clue about the word when someone starts the game?
+clues = {'cat': 'animal', 'book': 'item', 'apple': 'fruit', 'alligator': 'animal', 'banana': 'fruit'}
 
 def validate_input(input_string):
     """
@@ -23,7 +26,7 @@ def validate_input(input_string):
 def play():
 
     # TODO randomly select a word from a list of possible words
-    word = 'hello'
+    word = 'alligator'
 
     guessed_letters = []
     total_guesses = 5
@@ -35,6 +38,7 @@ def play():
         base_list.append('_')
 
     print 'guess the word! you have {} guesses'.format(total_guesses)
+    print 'your hint: {}'.format(clues[word])
 
     while wrong_guesses < total_guesses:
 
@@ -56,7 +60,7 @@ def play():
             char_in_word = False
             for index in range(len(word)):
                 if word[index] == guess:
-                    base_list[index] = str(guess)
+                    base_list[index] = guess
                     char_in_word = True
             if not char_in_word:
                 wrong_guesses += 1
