@@ -48,6 +48,9 @@ def play():
 
         guess = raw_input('enter a letter: ')
 
+        # let's lowercase their input in case they pass in a capital letter (maybe remove this?)
+        guess = guess.lower()
+
         if not validate_input(guess):
             print 'invalid input for word guess! must be a single letter.'
 
