@@ -25,8 +25,8 @@ def validate_input(input_string):
 
 def play():
 
-    # TODO randomly select a word from a list of possible words
-    word = 'alligator'
+    # randomly select a word from a list of possible words
+    word = random.choice(clues.keys())
 
     guessed_letters = []
     total_guesses = 5
@@ -39,12 +39,17 @@ def play():
 
     print 'guess the word! you have {} guesses'.format(total_guesses)
     print 'your hint: {}'.format(clues[word])
+    print '--------'
 
-    while wrong_guesses < total_guesses:
+    while True:
+        if wrong_guesses == total_guesses:
+            print 'you lose!'
+            break
 
         print 'total guesses: {}, wrong guesses: {}'.format(total_guesses, wrong_guesses)
         print 'you have guessed: {}'.format(guessed_letters)
-        print ''.join(base_list)
+        print ' '.join(base_list)
+        print ''
 
         guess = raw_input('enter a letter: ')
 
@@ -70,8 +75,5 @@ def play():
             if '_' not in base_list:
                 print 'YOU WIN WOOT'
                 break
-
-    # if we're outside the while loop we have guessed more wrong letters than allowed
-    print 'you lose!'
 
 play()
